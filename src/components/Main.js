@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import Index from "../pages/Index"
 import Show from "../pages/Show"
 
-const URL = "https://express-react-backend-hw.herokuapp.com/people/";
+const URL = "https://express-react-backend-hw.herokuapp.com/people";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (props) => {
   const [people, setPeople] = useState([])
@@ -36,7 +36,7 @@ export default (props) => {
   }
 
   const updatePeople = async( person, id ) => {
-    await fetch(URL + id,  {
+    await fetch(`${URL}/${id}`,  {
       method: 'put',
       headers: {
        "Content-Type": 'application/json'
@@ -47,7 +47,7 @@ export default (props) => {
   }
 
   const deletePeople = async (id) => {
-    await fetch(URL + id, {
+    await fetch(`${URL}/${id}`, {
       method: 'delete'
     })
     getPeople()
