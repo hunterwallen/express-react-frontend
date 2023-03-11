@@ -56,7 +56,7 @@ export default (props) => {
     getPeople()
   }
 
-  useEffect(() => getPeople, [])
+  useEffect(() => async() => getPeople(), [])
 
   return (
     <main>
