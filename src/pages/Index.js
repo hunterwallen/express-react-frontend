@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useMemo, useState} from 'react'
 import {Link} from 'react-router-dom'
 
 
@@ -42,6 +42,10 @@ export default (props) => {
     return <h1>Loading...</h1>
   }
 
+  const MainScreenContent = useMemo(() => {
+    return props.people ? <Loaded /> : <Loading />
+  }, [props])
+
   return (
     <section>
       <form onSubmit={handleSubmit}>
@@ -68,7 +72,7 @@ export default (props) => {
         />
         <input type='submit' value='Create Person' />
       </form>
-      {props.people ? <Loaded /> : <Loading />}
+      {MainScreenContent}
     </section>
   )
 }
