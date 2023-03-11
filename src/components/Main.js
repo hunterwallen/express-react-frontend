@@ -13,6 +13,7 @@ export default (props) => {
   const getPeople = async () => {
     const response = await fetch(URL)
     const data = await response.json()
+    console.log(data)
     setPeople(data)
   }
 
