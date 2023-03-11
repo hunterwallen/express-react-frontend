@@ -3,17 +3,16 @@ import { Routes, Route } from "react-router-dom"
 import Index from "../pages/Index"
 import Show from "../pages/Show"
 
+const URL = "https://express-react-backend-hw.herokuapp.com/people";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (props) => {
-  const URL = "https://express-react-backend-hw.herokuapp.com/people";
-
+  
   const [people, setPeople] = useState(null)
 
   const getPeople = async () => {
     const response = await fetch(URL)
     const data = await response.json()
-    console.log(data)
     setPeople(data)
   }
 
@@ -56,7 +55,9 @@ export default (props) => {
     getPeople()
   }
 
-  useEffect(() => async() => getPeople(), [])
+  useEffect(() => {
+    getPeople()
+  }, [])
 
   return (
     <main>
